@@ -347,6 +347,7 @@ const Muscle = styled(PurposeButton)``;
 const Stress = styled(PurposeButton)``;
 const Hobby = styled(PurposeButton)``;
 
+
 const SliderContainer = styled.div`
   width: 60rem;
   position: relative;
@@ -371,7 +372,8 @@ const StyledThumb = styled.div`
   background-color: var(--Main-Color, #6BA6FF);
   border-radius: 50%;
   cursor: grab;
-  transition: transform 0.2s ease-in-out; 
+  transition: transform 0.2s ease-in-out;
+  transform: translateY(-6px);
 `;
 
 const StyledTrack = styled.div`
@@ -379,18 +381,22 @@ const StyledTrack = styled.div`
   bottom: 2rem;
   background: ${(props) => (props.index === 2 ? '#f00' : props.index === 1 ? '#ddd' : 'var(--Main-Color, #6BA6FF)')};
   border-radius: 999px;
-  transition: background-color 0.2s ease-in-out; 
+  transition: background-color 0.2s ease-in-out;
+  position: relative;
 `;
 
 const Label = styled.div`
   position: absolute;
-  top: 4rem;
+  top: 3rem;
+  left: 50%; 
+  transform: translateX(-50%);
   color: #333e5e;
-  font-family: var(--font-family-pretendard);
+  font-family: var(--font-family-pretendard), sans-serif; 
   font-size: 2.6rem;
   font-weight: 700;
-  line-height: normal;
-  transform: translate(-50%, -50%);
+  line-height: 1.2;
+  white-space: nowrap; 
+  text-align: center; 
 `;
 
 const labels = ['병아리', '초급', '중급', '고급', '전문가'];
@@ -415,6 +421,7 @@ const SliderWithLabels = ({ value, onChange }) => {
     </SliderContainer>
   );
 };
+
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -490,15 +497,15 @@ const ModalForm = ({ isOpen, onClose, data }) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <Overlay isOpen={isOpen} onClick={onClose} />
+        <Overlay isOpen={isOpen} />
         <ModalContainer isOpen={isOpen}>
           <ModalContent>
-            <button onClick={onClose} style={{ position: 'absolute', top: '6.9rem', left: '7.1rem', background: 'white', border: 'none' }}>
+            <button type="button" onClick={onClose} style={{ position: 'absolute', top: '6.9rem', left: '7.1rem', background: 'white', border: 'none' , cursor:'pointer'}}>
               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
                 <path d="M1.46447 1.46447C3.41709 -0.488155 6.58291 -0.488155 8.53553 1.46447L20 12.9289L31.4645 1.46447C33.4171 -0.488155 36.5829 -0.488155 38.5355 1.46447C40.4882 3.41709 40.4882 6.58291 38.5355 8.53553L27.0711 20L38.5355 31.4645C40.4882 33.4171 40.4882 36.5829 38.5355 38.5355C36.5829 40.4882 33.4171 40.4882 31.4645 38.5355L20 27.0711L8.53553 38.5355C6.58291 40.4882 3.41709 40.4882 1.46447 38.5355C-0.488155 36.5829 -0.488155 33.4171 1.46447 31.4645L12.9289 20L1.46447 8.53553C-0.488155 6.58291 -0.488155 3.41709 1.46447 1.46447Z" fill="#D9D9D9" />
               </svg>
             </button>
-            <button type="submit" className="signupformbtn" style={{ position: 'absolute', top: '6.9rem', right: '7.1rem', width: '14rem', height: '5.3rem', gap: '1rem', justifyContent: 'center', alignItems: 'center', background: '#6BA6FF', color: 'white' }}>
+            <button type="submit" className="signupformbtn" style={{ position: 'absolute', top: '6.9rem', right: '7.1rem', width: '14rem', height: '5.3rem', gap: '1rem', justifyContent: 'center', alignItems: 'center', background: '#6BA6FF', color: 'white' ,cursor:'pointer'}}>
               신청하기
             </button>
             <TutorThumbnail>
